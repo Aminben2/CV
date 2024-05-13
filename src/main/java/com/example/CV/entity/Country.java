@@ -16,4 +16,8 @@ public class Country {
 
     @Column(name = "CountryName", nullable = false)
     private String countryName;
+
+    @Column(name = "NationalityName", nullable = false)
+    private String nationalityName;
+
 }
