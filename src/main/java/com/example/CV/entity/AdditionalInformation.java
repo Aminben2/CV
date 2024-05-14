@@ -9,6 +9,9 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "AdditionalInformation")
 public class AdditionalInformation {
+
+    public AdditionalInformation() {
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "AdditionalInfoID")

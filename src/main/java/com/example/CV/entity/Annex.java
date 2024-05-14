@@ -10,6 +10,9 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "Annexes")
 public class Annex {
+    public Annex() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "AnnexID")

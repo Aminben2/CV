@@ -9,6 +9,9 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "Languages")
 public class Language {
+    public Language(){
+
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "LanguageID")

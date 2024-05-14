@@ -9,6 +9,9 @@ import lombok.Data;
 @Entity
 @Table(name = "Postes")
 public class Poste {
+    public Poste(){
+
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PosteID")

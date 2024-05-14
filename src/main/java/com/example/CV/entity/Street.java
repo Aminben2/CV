@@ -10,6 +10,9 @@ import lombok.Data;
 @Entity
 @Table(name = "Streets")
 public class Street {
+    public Street (){
+
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "StreetID")

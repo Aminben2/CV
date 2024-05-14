@@ -8,6 +8,9 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "Sectors")
 public class Sector {
+    public Sector (){
+
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "SectorID")

@@ -11,6 +11,10 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "Studies")
 public class Study {
+
+    public Study(){
+
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "StudyID")

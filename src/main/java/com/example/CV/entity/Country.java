@@ -9,6 +9,9 @@ import lombok.Data;
 @Entity
 @Table(name = "Countries")
 public class Country {
+    // Default constructor
+    public Country() {
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CountryID")
@@ -17,7 +20,7 @@ public class Country {
     @Column(name = "CountryName", nullable = false)
     private String countryName;
 
-    @Column(name = "NationalityName", nullable = false)
+    @Column(name = "NationalityName", nullable = true)
     private String nationalityName;
 
 }

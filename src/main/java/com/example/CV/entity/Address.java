@@ -9,6 +9,8 @@ import lombok.Data;
 @Entity
 @Table(name = "Addresses")
 public class Address {
+    public Address() {
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "AddressID")

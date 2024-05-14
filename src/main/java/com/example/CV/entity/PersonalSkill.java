@@ -9,6 +9,9 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "PersonalSkills")
 public class PersonalSkill {
+    public  PersonalSkill (){
+
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PSID")

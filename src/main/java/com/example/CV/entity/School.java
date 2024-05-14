@@ -9,6 +9,9 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "Schools")
 public class School {
+    public School(){
+
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "SchoolID")

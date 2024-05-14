@@ -11,6 +11,8 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "WorkExperiences")
 public class WorkExperience {
+    public WorkExperience(){
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ExperienceID")

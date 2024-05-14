@@ -9,6 +9,11 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "Resumes")
 public class Resume {
+
+    // Default constructor
+    public Resume() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ResumeID")
@@ -17,4 +22,5 @@ public class Resume {
     @OneToOne
     @JoinColumn(name = "PersonalInfoID")
     private PersonalInformation personalInformation;
+
 }

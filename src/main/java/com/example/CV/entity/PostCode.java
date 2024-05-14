@@ -10,6 +10,9 @@ import lombok.Data;
 @Entity
 @Table(name = "Postcodes")
 public class PostCode {
+    public PostCode(){
+
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PostcodeID")
