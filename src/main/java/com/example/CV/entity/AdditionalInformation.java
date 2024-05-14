@@ -3,13 +3,14 @@ package com.example.CV.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import jakarta.persistence.*;
+import lombok.ToString;
 
 @Data
 @AllArgsConstructor
 @Entity
 @Table(name = "AdditionalInformation")
+@ToString(exclude = "resume")
 public class AdditionalInformation {
-
     public AdditionalInformation() {
     }
     @Id

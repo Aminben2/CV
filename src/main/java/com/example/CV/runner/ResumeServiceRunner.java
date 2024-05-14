@@ -1,4 +1,5 @@
 package com.example.CV.runner;
+import com.example.CV.dto.ResumeDetailsDTO;
 import com.example.CV.entity.Resume;
 import com.example.CV.service.ResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,10 @@ public class ResumeServiceRunner implements CommandLineRunner {
             return;
         }
         String email = args[0];
-        Resume resume = resumeService.findResumeByEmail(email);
-        if (resume != null) {
+        ResumeDetailsDTO data = resumeService.findResumeDetailsByEmail(email);
+        if (data != null) {
             System.out.println("Resume found:");
-            System.out.println(resume);
+            System.out.println(data);
         } else {
             System.out.println("Resume not found for email: " + email);
         }

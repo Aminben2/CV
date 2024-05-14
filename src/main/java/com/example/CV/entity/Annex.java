@@ -3,12 +3,15 @@ package com.example.CV.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import jakarta.persistence.*;
+import lombok.ToString;
 
 
 @Data
 @AllArgsConstructor
 @Entity
 @Table(name = "Annexes")
+@ToString(exclude = "resume")
+
 public class Annex {
     public Annex() {
     }
