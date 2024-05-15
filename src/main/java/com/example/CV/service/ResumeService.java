@@ -16,8 +16,19 @@ public class ResumeService {
     @Transactional(readOnly = true)
     public ResumeDetailsDTO findResumeDetailsByEmail(String email) {
         Resume resume = resumeRepository.findByPersonalInformation_Email(email);
+        if (resume == null) {
+            return null; // or handle not found case
+        }
+
+        // Initialize collections
+        resume.getStudies().size();
+        resume.getPersonalSkills().size();
+        resume.getWorkExperiences().size();
+        resume.getAdditionalInformation().size();
+        resume.getAnnexes().size();
+
         return new ResumeDetailsDTO(
-                resume.getId(),
+                resume,
                 resume.getPersonalInformation(),
                 resume.getStudies(),
                 resume.getPersonalSkills(),
