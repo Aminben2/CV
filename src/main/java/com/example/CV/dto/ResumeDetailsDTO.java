@@ -18,4 +18,6 @@ public class ResumeDetailsDTO {
     private List<WorkExperience> workExperiences;
     private List<AdditionalInformation> additionalInformation;
     private List<Annex> annexes;
+
+
 }
