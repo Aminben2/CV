@@ -38,8 +38,8 @@ public class ResumeServiceRunner implements CommandLineRunner {
             ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());;
             String jsonData = objectMapper.writeValueAsString(data);
 
-            System.out.println(jsonData);
-//             pdfService.generatePdf(data, outputPath);
+//            System.out.println(jsonData);
+             pdfService.generatePdf(data, outputPath);
              System.out.println("PDF generated successfully at " + outputPath);
         } else {
             System.out.println("Resume not found for email: " + email);

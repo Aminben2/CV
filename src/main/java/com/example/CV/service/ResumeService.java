@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -139,7 +141,6 @@ public class ResumeService {
         cityDTO.setCountry(countryToDTO(city.getCountry()));
         return cityDTO;
     }
-
 
     private CountryDTO countryToDTO(Country country) {
         if (country == null) return null;
