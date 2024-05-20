@@ -1,26 +1,37 @@
 package com.example.CV.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
-@Data
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "Cities")
+@Table(name = "City")
+@Data
 public class City {
-    public City (){
-
-    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CityID")
     private Long id;
 
-    @Column(name = "CityName", nullable = false)
-    private String cityName;
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @OneToMany(mappedBy = "city",fetch = FetchType.EAGER)
+    private List<Address> addresses = new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "CountryID")
+    @JoinColumn(name = "country_id")
     private Country country;
+
+    @OneToMany(mappedBy = "city",fetch = FetchType.EAGER)
+    private List<Experience> experiences = new ArrayList<>();
+
+    @OneToMany(mappedBy = "city",fetch = FetchType.EAGER)
+    private List<Institution> institutions = new ArrayList<>();
+
 }

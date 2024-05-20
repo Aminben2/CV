@@ -1,6 +1,6 @@
 package com.example.CV.service;
 
-import com.example.CV.dto.ResumeDetailsDTO;
+import com.example.CV.dto.ResumeDTO;
 import com.openhtmltopdf.pdfboxout.PdfRendererBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class PdfService {
     @Autowired
     private TemplateEngine templateEngine;
 
-    public void generatePdf(ResumeDetailsDTO resumeDetailsDTO, String outputPath) throws Exception {
+    public void generatePdf(ResumeDTO resumeDetailsDTO, String outputPath) throws Exception {
         Context context = new Context();
         context.setVariable("resume", resumeDetailsDTO);
 

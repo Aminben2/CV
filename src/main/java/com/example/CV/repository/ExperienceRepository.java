@@ -1,9 +1,9 @@
 package com.example.CV.repository;
 
-import com.example.CV.entity.Sector;
+import com.example.CV.entity.Experience;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SectorRepository extends JpaRepository<Sector, Long> {
+public interface ExperienceRepository extends JpaRepository<Experience, Long> {
 }

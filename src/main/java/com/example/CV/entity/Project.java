@@ -4,16 +4,14 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Sector")
+@Table(name = "Project")
 @Data
-public class Sector {
+public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,8 +22,7 @@ public class Sector {
     @Column(name = "description")
     private String description;
 
-
-    @OneToMany(mappedBy = "sector",fetch = FetchType.EAGER)
-    private List<Degree> degrees = new ArrayList<>();
+    @OneToMany(mappedBy = "project",fetch = FetchType.EAGER)
+    private List<Experience> experiences = new ArrayList<>();
 
 }

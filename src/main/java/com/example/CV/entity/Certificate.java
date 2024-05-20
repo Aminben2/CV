@@ -4,28 +4,25 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
-@AllArgsConstructor
+
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "Sector")
+@Table(name = "Certificate")
 @Data
-public class Sector {
+public class Certificate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name")
-    private String name;
+    private String name ;
 
     @Column(name = "description")
     private String description;
 
-
-    @OneToMany(mappedBy = "sector",fetch = FetchType.EAGER)
-    private List<Degree> degrees = new ArrayList<>();
-
+    @ManyToMany(mappedBy = "certificates",fetch = FetchType.EAGER)
+    private List<Resume> resumes = new ArrayList<>();
 }

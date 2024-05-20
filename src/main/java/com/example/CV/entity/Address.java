@@ -1,25 +1,25 @@
 package com.example.CV.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Addresses")
+@Data
+@Table(name = "address")
 public class Address {
-    public Address() {
-    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "AddressID")
     private Long id;
 
-    @Column(name = "HouseNumber", nullable = false)
-    private String houseNumber;
+    @Column(name = "address_description")
+    private String addressDescription;
 
-    @ManyToOne
-    @JoinColumn(name = "StreetID")
-    private Street street;
+    @Column(name = "postal_code")
+    private Integer postalCode;
+
+    @ManyToOne()
+    @JoinColumn(name = "city_id")
+    private City city;
 }

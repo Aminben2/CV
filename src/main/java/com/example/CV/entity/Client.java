@@ -11,9 +11,9 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Sector")
+@Table(name = "Client" )
 @Data
-public class Sector {
+public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,11 +21,7 @@ public class Sector {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "description")
-    private String description;
-
-
-    @OneToMany(mappedBy = "sector",fetch = FetchType.EAGER)
-    private List<Degree> degrees = new ArrayList<>();
+    @OneToMany(mappedBy = "client",fetch = FetchType.EAGER)
+    private List<Experience> experiences = new ArrayList<>();
 
 }

@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ResumeRepository extends JpaRepository<Resume, Long> {
-    Resume findByPersonalInformation_Email(String email);
+    Resume findByEmail(String email);
 }

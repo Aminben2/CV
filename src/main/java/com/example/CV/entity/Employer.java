@@ -9,17 +9,17 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Language")
+@Table(name = "Employer")
 @Data
-public class Language {
+public class Employer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "language_code")
-    private String languageCode;
+    @Column(name = "name")
+    private String name;
 
-    @OneToMany(mappedBy = "language",fetch = FetchType.EAGER)
-    private List<LanguageProficiency> languageProficiencies = new ArrayList<>();
+    @OneToMany(mappedBy = "employer",fetch = FetchType.EAGER)
+    private List<Experience> experiences = new ArrayList<>();
 
 }

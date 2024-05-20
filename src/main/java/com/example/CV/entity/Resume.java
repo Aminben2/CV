@@ -1,74 +1,69 @@
 package com.example.CV.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import jakarta.persistence.*;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
-import java.util.Collection;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "Resumes")
-@ToString(exclude = {"studies", "personalSkills", "workExperiences", "additionalInformation", "annexes"})
-
+@Table(name = "Resume")
+@Data
 public class Resume {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ResumeID")
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "PersonalInfoID")
-    private PersonalInformation personalInformation;
+    @Column(name = "given_name")
+    private String givenName;
+
+    @Column(name = "family_name")
+    private String familyName;
+
+    @Column(name = "formatted_name")
+    private String formattedName;
+
+    @Column(name = "birth_date")
+    private LocalDate birthDate;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    @ManyToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
+
+    @ManyToOne
+    @JoinColumn(name = "primary_language_id")
+    private Language primaryLanguage;
 
     @OneToMany(mappedBy = "resume")
-    private List<Study> studies;
+    private List<Experience> experiences = new ArrayList<>();
 
     @OneToMany(mappedBy = "resume")
-    private List<PersonalSkill> personalSkills;
+    private List<Skill> skills = new ArrayList<>();
 
     @OneToMany(mappedBy = "resume")
-    private List<WorkExperience> workExperiences;
+    private List<LanguageProficiency> languageProficiencies = new ArrayList<>();
 
-    @OneToMany(mappedBy = "resume")
-    private List<AdditionalInformation> additionalInformation;
+    @ManyToMany
+    @JoinTable(joinColumns = @JoinColumn(name = "resume_id"))
+    private List<Certificate> certificates = new ArrayList<>();
 
-    @OneToMany(mappedBy = "resume")
-    private List<Annex> annexes;
+    @ManyToMany
+    @JoinTable(joinColumns = @JoinColumn(name = "resume_id"))
+    private List<Country> countries = new ArrayList<>();
 
-    // Explicit getters
+    @ManyToMany
+    @JoinTable(name = "Resume_educations",
+            joinColumns = @JoinColumn(name = "resume_id"),
+            inverseJoinColumns = @JoinColumn(name = "educations_id"))
+    private List<Education> educations = new ArrayList<>();
 
-    public Long getId() {
-        return id;
-    }
-
-    public List<Study> getStudies() {
-        return studies;
-    }
-
-    public List<PersonalSkill> getPersonalSkills() {
-        return personalSkills;
-    }
-
-    public List<WorkExperience> getWorkExperiences() {
-        return workExperiences;
-    }
-
-    public List<AdditionalInformation> getAdditionalInformation() {
-        return additionalInformation;
-    }
-
-    public List<Annex> getAnnexes() {
-        return annexes;
-    }
-
-    public PersonalInformation getPersonalInformation() {
-        return personalInformation;
-    }
 }

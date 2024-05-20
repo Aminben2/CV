@@ -1,25 +1,22 @@
 package com.example.CV.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import jakarta.persistence.*;
+import lombok.*;
 
-@Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "Skill")
+@Data
 @Entity
-@Table(name = "SKILLS")
 public class Skill {
-    public Skill (){
-
-    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "SkillID")
     private Long id;
 
-    @Column(name = "SkillName", nullable = false)
-    private String skillName;
-
-    @Column(name = "Description", columnDefinition = "TEXT")
+    @Column(name="description")
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "resume_id")
+    private Resume resume;
 }

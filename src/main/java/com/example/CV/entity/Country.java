@@ -1,26 +1,28 @@
 package com.example.CV.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
-@Data
+import java.util.ArrayList;
+import java.util.List;
+
+@NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Countries")
+@Table(name = "Country")
+@Data
 public class Country {
-    // Default constructor
-    public Country() {
-    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CountryID")
     private Long id;
 
-    @Column(name = "CountryName", nullable = false)
-    private String countryName;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "NationalityName", nullable = true)
-    private String nationalityName;
+    @OneToMany(mappedBy = "country",fetch = FetchType.EAGER)
+    private List<City> cities = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "countries",fetch = FetchType.EAGER)
+    private List<Resume> resumes = new ArrayList<>();
 
 }
