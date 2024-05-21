@@ -1,120 +1,138 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="pdfkit-page-size" content="A4" />
     <meta name="pdfkit-orientation" content="portrait" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Europass CV</title>
-    <link rel="stylesheet" href="cv_template.css" />
-    <link rel="icon" type="image/png" href="images/icon.png" />
+    <link rel="stylesheet" href="../static/css/cv_template.css" />
+    <link rel="icon" type="image/png" href="./images/icon.png" />
 </head>
 
 <body>
 <div class="container">
     <div class="head">
-        <img src="images/Europass-logo.png" class="logo" alt="logo-europass" />
-        <h6 class="fullName" th:text="${resume.formattedName}"></h6>
+        <div class="logoName">
+            <img src="images/Europass-logo.png" class="logo" alt="logo-europass" />
+            <h6 class="fullName" th:text="${resume.formattedName}"></h6>
+        </div>
 
         <hr class="top" />
 
         <div class="personal-info">
             <p>
-                <span class="infoTitle"> Date of Birth:</span> <span th:text="${resume.birthDate}"></span> <span class="dash">|</span>
+                <span class="infoTitle"> Date of Birth:</span> <span class="birthDate" th:text="${resume.birthDate}"></span> <span class="dash">|</span>
                 <span class="infoTitle"> Nationality:</span> Nationality <span class="dash">|</span>
-                <span class="infoTitle"> Phone:</span> <span th:text="${resume.phoneNumber}"></span> <span class="dash">|</span>
-                <span class="infoTitle"> Email:</span> <a th:href="'mailto:' + ${resume.email}"><span th:text="${resume.email}"></span></a> <span class="dash">|</span>
-                <span class="infoTitle"> Address: </span> <span th:text="${resume.address.addressDescription}"></span>
+                <span class="infoTitle"> Phone:</span> <span class="phoneNumber" th:text="${resume.phoneNumber}"></span> <span class="dash">|</span>
+                <span class="infoTitle"> Email:</span> <a th:href="'mailto:' + ${resume.email}"><span class="email" th:text="${resume.email}"></span></a> <span class="dash">|</span>
+                <span class="infoTitle"> Address: </span> <span class="address" th:text="${resume.address.addressDescription}"></span>
             </p>
         </div>
     </div>
 
-    <div class="cvBody">
-
-        <div class="section" th:each="experience : ${resume.experiences}">
-            <div class="titleSection">
-                <div class="cercle"></div>
-                <h5 class="nameSection">WORK EXPERIENCE</h5>
-            </div>
-            <hr />
-            <div class="headSection">
-                <p class="dateCity" th:text="${experience.startDate} + ' - ' + ${experience.endDate}">Date</p>
-                <p class="CompanyPoositionExp" th:text="${experience.employer.name} + ', ' + ${experience.city.name}">Company Position</p>
-            </div>
-            <hr />
-            <div class="details">
-                <ul>
-                    <li th:text="${experience.description}">Description</li>
-                </ul>
-            </div>
+    <!-- Experience Section -->
+    <div class="section">
+        <div class="titleSection">
+            <div class="cercle"></div>
+            <h5 class="nameSection">WORK EXPERIENCE</h5>
         </div>
-
-        <div class="section" th:each="education : ${resume.educations}">
-            <div class="titleSection">
-                <div class="cercle"></div>
-                <h5 class="nameSection">EDUCATION AND TRAINING</h5>
-            </div>
-            <hr />
-            <div class="headSection">
-                <p class="dateCity" th:text="${education.startDate} + ' - ' + ${education.endDate}">Date</p>
-                <p class="CompanyPoositionExp" th:text="${education.degree.title}"></p>
-            </div>
-            <hr />
-            <div class="details">
-                <p th:text="${education.degree.institution.name}"></p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="titleSection">
-                <div class="cercle"></div>
-                <h5 class="nameSection">Programming Languages</h5>
-            </div>
-            <hr />
-            <div class="details">
-                <div class="gridElement">
-                    <p th:each="skill : ${resume.skills}" th:text="${skill.description}"></p>
+        <hr />
+        <!-- Loop through each experience -->
+        <div th:each="experience : ${resume.experiences}">
+            <div class="experience">
+                <div class="headSection">
+                    <p class="dateCity" th:text="${experience.startDate} + ' - ' + ${experience.endDate}">Date</p>
+                    <p class="CompanyPositionExp" th:text="${experience.employer.name} + ', ' + ${experience.city.name}">Company Position</p>
+                </div>
+                <hr class="under"/>
+                <div class="details">
+                    <ul>
+                        <li class="experienceDescription" th:text="${experience.description}">Description</li>
+                    </ul>
                 </div>
             </div>
         </div>
+        <!-- End loop -->
+    </div>
+    <!-- End Experience Section -->
 
-        <div class="section">
-            <div class="titleSection">
-                <div class="cercle"></div>
-                <h5 class="nameSection">LANGUAGE SKILLS</h5>
-            </div>
-            <hr />
-
-            <div class="details">
-                <p>Mother tongue(s): <b th:text="${resume.primaryLanguage.languageCode}"></b></p>
-                <p>Other language(s):</p>
-
-
-                <div class="gridElement">
-                    <table>
-                        <thead>
-                            <th>understandingListening</th>
-                            <th>understandingReading</th>
-                            <th>speakingInteraction</th>
-                            <th>speakingProduction</th>
-                            <th>writingProduction</th>
-                        </thead>
-                        <tbody>
-                            <tr th:each="proficiency : ${resume.languageProficiencies}">
-                                <td th:text="${proficiency.language.languageCode}"></td>
-                                <td th:text="${proficiency.understandingListening.level}"></td>
-                                <td th:text="${proficiency.understandingReading.level}"></td>
-                                <td th:text="${proficiency.speakingInteraction.level}"></td>
-                                <td th:text="${proficiency.speakingProduction.level}"></td>
-                                <td th:text="${proficiency.writingProduction.level}"></td>
-                            </tr>
-                        </tbody>
-                    </table>
+    <!-- Education Section -->
+    <div class="section">
+        <div class="titleSection">
+            <div class="cercle"></div>
+            <h5 class="nameSection">EDUCATION AND TRAINING</h5>
+        </div>
+        <hr />
+        <!-- Loop through each education -->
+        <div th:each="education : ${resume.educations}">
+            <div class="EDUCATION">
+                <div class="headSection">
+                    <p class="dateCity" th:text="${education.startDate} + ' - ' + ${education.endDate}">Date</p>
+                    <p class="DegreeTitle" th:text="${education.degree.title}"></p>
+                </div>
+                <hr class="under" />
+                <div class="details">
+                    <ul>
+                        <li class="experienceDescription" th:text="${education.degree.institution.name}"></li>
+                    </ul>
                 </div>
             </div>
+        </div>
+        <!-- End loop -->
+    </div>
+    <!-- End Education Section -->
+
+    <!-- Skills Section -->
+    <div class="section">
+        <div class="titleSection">
+            <div class="cercle"></div>
+            <h5 class="nameSection">Skills</h5>
+        </div>
+        <hr />
+        <div class="details">
+            <ul>
+                <li class="experienceDescription" th:each="skill : ${resume.skills}" th:text="${skill.description}"></li>
+            </ul>
         </div>
     </div>
+    <!-- End Skills Section -->
+
+    <!-- Language Skills Section -->
+    <div class="section">
+        <div class="titleSection">
+            <div class="cercle"></div>
+            <h5 class="nameSection">LANGUAGE SKILLS</h5>
+        </div>
+        <hr />
+        <div class="details">
+            <ul>
+                <li class="experienceDescription" th:text="'Mother tongue(s): ' + ${resume.primaryLanguage.languageCode}"></li>
+                <li class="experienceDescription">Other language(s):</li>
+            </ul>
+            <table>
+                <tr class="tblSubHeader">
+                    <td>Language</td>
+                    <td>Listening</td>
+                    <td>Reading</td>
+                    <td>Spoken production</td>
+                    <td>Spoken interaction</td>
+                    <td>Writing production</td>
+                </tr>
+                <tr th:each="proficiency : ${resume.languageProficiencies}">
+                    <td th:text="${proficiency.language.languageCode}"></td>
+                    <td th:text="${proficiency.understandingListening.level}"></td>
+                    <td th:text="${proficiency.understandingReading.level}"></td>
+                    <td th:text="${proficiency.speakingProduction.level}"></td>
+                    <td th:text="${proficiency.speakingInteraction.level}"></td>
+                    <td th:text="${proficiency.writingProduction.level}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- End Language Skills Section -->
 </div>
 </body>
 
