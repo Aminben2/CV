@@ -3,7 +3,6 @@ package com.example.CV.mapper;
 import com.example.CV.dto.ResumeDTO;
 import com.example.CV.entity.Resume;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -38,7 +37,7 @@ public class ResumeMapper {
         resumeDTO.setSkills(skillMapper.skillsToDTO(resume.getSkills()));
         resumeDTO.setLanguageProficiencies(languageProficiencyMapper.languageProficienciesToDTO(resume.getLanguageProficiencies()));
         resumeDTO.setCertificates(certificateMapper.certificatesToDTO(resume.getCertificates()));
-        resumeDTO.setCountries(countryMapper.countriesToDTO(resume.getCountries()));
+        resumeDTO.setNationalities(countryMapper.countriesToDTO(resume.getNationalities()));
         resumeDTO.setEducations(educationMapper.educationsToDTO(resume.getEducations()));
 
         return resumeDTO;

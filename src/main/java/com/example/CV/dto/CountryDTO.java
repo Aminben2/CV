@@ -7,6 +7,7 @@ import java.util.List;
 public class CountryDTO {
     private Long id;
     private String name;
+    private String nationalityName;
     private List<CityDTO> cities;
     private List<ResumeDTO> resumes;
 }

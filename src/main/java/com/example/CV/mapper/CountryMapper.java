@@ -17,6 +17,7 @@ public class CountryMapper {
         CountryDTO countryDTO = new CountryDTO();
         countryDTO.setId(country.getId());
         countryDTO.setName(country.getName());
+        countryDTO.setNationalityName(country.getNationalityName());
         return countryDTO;
     }
 

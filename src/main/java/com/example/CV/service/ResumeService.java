@@ -20,7 +20,7 @@ public class ResumeService {
         Resume resume = resumeRepository.findByEmail(email);
         if (resume == null) return null;
         // Initialize collections to avoid lazy loading issues
-        resume.getCountries().size();
+        resume.getNationalities().size();
         resume.getCertificates().size();
         resume.getEducations().size();
         resume.getSkills().size();

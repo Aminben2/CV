@@ -58,7 +58,7 @@ public class Resume {
 
     @ManyToMany
     @JoinTable(joinColumns = @JoinColumn(name = "resume_id"))
-    private List<Country> countries = new ArrayList<>();
+    private List<Country> nationalities = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(name = "Resume_educations",
