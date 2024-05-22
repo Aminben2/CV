@@ -25,7 +25,7 @@ public class Country {
     @OneToMany(mappedBy = "country",fetch = FetchType.EAGER)
     private List<City> cities = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "nationalities",fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "countries",fetch = FetchType.EAGER)
     private List<Resume> resumes = new ArrayList<>();
 
 }

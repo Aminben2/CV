@@ -37,7 +37,7 @@ public class ResumeMapper {
         resumeDTO.setSkills(skillMapper.skillsToDTO(resume.getSkills()));
         resumeDTO.setLanguageProficiencies(languageProficiencyMapper.languageProficienciesToDTO(resume.getLanguageProficiencies()));
         resumeDTO.setCertificates(certificateMapper.certificatesToDTO(resume.getCertificates()));
-        resumeDTO.setNationalities(countryMapper.countriesToDTO(resume.getNationalities()));
+        resumeDTO.setCountries(countryMapper.countriesToDTO(resume.getCountries()));
         resumeDTO.setEducations(educationMapper.educationsToDTO(resume.getEducations()));
 
         return resumeDTO;

@@ -19,6 +19,6 @@ public class ResumeDTO {
     private List<SkillDTO> skills;
     private List<LanguageProficiencyDTO> languageProficiencies;
     private List<CertificateDTO> certificates;
-    private List<CountryDTO> nationalities;
+    private List<CountryDTO> countries;
     private List<EducationDTO> educations;
 }

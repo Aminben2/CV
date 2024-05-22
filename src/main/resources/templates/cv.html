@@ -3,9 +3,6 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="pdfkit-page-size" content="A4" />
-    <meta name="pdfkit-orientation" content="portrait" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Europass CV</title>
     <link rel="stylesheet" href="../static/css/cv_template.css" />
@@ -23,13 +20,30 @@
         <hr class="top" />
 
         <div class="personal-info">
-            <p>
-                <span class="infoTitle"> Date of Birth:</span> <span class="birthDate" th:text="${resume.birthDate}"></span> <span class="dash">|</span>
-                <span class="infoTitle"> Phone:</span> <span class="phoneNumber" th:text="${resume.phoneNumber}"></span> <span class="dash">|</span>
-                <span class="infoTitle"> Email:</span> <a th:href="'mailto:' + ${resume.email}"><span class="email" th:text="${resume.email}"></span></a> <span class="dash">|</span>
-                <span class="infoTitle"> Address: </span> <span class="address" th:text="${resume.address.addressDescription}"></span>
-                <span class="infoTitle" th:each="nationality : ${resume.nationalities}"> Nationalities:</span> <span th:text="${nationality.nationalityName}"></span><span class="dash">|</span>
-            </p>
+               <div class="info-row">
+                   <div class="info">
+                       <span class="infoTitle"> Date of Birth:</span> <span th:text="${resume.birthDate}"></span>
+                   </div>
+                   <span class="dash">|</span>
+                   <div class="info">
+                       <span class="infoTitle"> Phone:</span> <span th:text="${resume.phoneNumber}"></span>
+                   </div>
+               </div>
+                <div class="info-row">
+                    <div class="info">
+                        <span class="infoTitle"> Email:</span> <a th:href="'mailto:' + ${resume.email}"><span th:text="${resume.email}"></span></a>
+                    </div>
+                    <span class="dash">|</span>
+                    <div class="info">
+                        <span class="infoTitle"> Address: </span> <span th:text="${resume.address.addressDescription}"></span>
+                    </div>
+                </div>
+               <div class="last-info">
+                   <span class="infoTitle">Nationalities:</span>
+                   <span th:each="country : ${resume.countries}">
+                    <span th:text="${country.nationalityName}"></span>
+                    </span>
+               </div>
         </div>
     </div>
 
@@ -46,8 +60,8 @@
                 <div class="headSection">
                     <p class="dateCity" th:text="${experience.startDate} + ' - ' + ${experience.endDate}">Date</p>
                     <p class="CompanyPositionExp" th:text="${experience.employer.name} + ', ' + ${experience.city.name}">Company Position</p>
+                    <hr class="under"/>
                 </div>
-                <hr class="under"/>
                 <div class="details">
                     <ul>
                         <li class="experienceDescription" th:text="${experience.description}">Description</li>
@@ -72,8 +86,8 @@
                 <div class="headSection">
                     <p class="dateCity" th:text="${education.startDate} + ' - ' + ${education.endDate}">Date</p>
                     <p class="DegreeTitle" th:text="${education.degree.title}"></p>
+                    <hr class="under" />
                 </div>
-                <hr class="under" />
                 <div class="details">
                     <ul>
                         <li class="experienceDescription" th:text="${education.degree.institution.name}"></li>
@@ -94,7 +108,7 @@
         <hr />
         <div class="details">
             <ul>
-                <li class="experienceDescription" th:each="skill : ${resume.skills}" th:text="${skill.description}"></li>
+                <li  th:each="skill : ${resume.skills}" th:text="${skill.description}"></li>
             </ul>
         </div>
     </div>

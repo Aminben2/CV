@@ -3,9 +3,10 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: #333;
+  color: rgba(51, 51, 51, 1);
 }
-*{
+
+* {
   list-style: none;
 }
 
@@ -13,55 +14,45 @@ body {
 .container {
   max-width: 100%;
   margin: 20px;
-  border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #ffffff;
-
+  background-color: rgba(255, 255, 255, 1);
 }
 
-
-.under{
-  margin: 0 35px;
+.under {
+  margin :0px ;
   height: 0.1px;
+  width:100%;
   opacity: 0.3;
-  background-color: #a18e8e1c;
+  background-color: rgba(161, 142, 142, 0.196);
 }
-
-
 
 .head {
   width: 100%;
-  background-color: #f1f1f1;
+  background-color: rgba(241, 241, 241, 1);
   padding: 20px 0;
   border: 0;
 }
-
-
 
 .logoName {
   overflow: auto; /* Clearfix to contain floated elements */
 }
 
-
-
-
 .fullName {
-  float: left; /* Float the name to the left */
-  color: #565656;
+  float: left;
+  color: rgba(86, 86, 86, 1);
   font-size: 30px;
   font-weight: 600;
-  text-shadow: 2px 2px 4px #565656;
+  text-shadow: 2px 2px 4px rgba(86, 86, 86, 1); /* #565656 */
   text-transform: uppercase;
   letter-spacing: 2px;
   margin: 0px;
   padding: 10px 20px;
 }
 
-
 hr {
   margin: 0 35px;
   height: 2px;
-  background-color: #9a9494;
+  background-color: rgba(154, 148, 148, 1);
   border-radius: 10%;
 }
 
@@ -70,10 +61,27 @@ hr {
 }
 
 .personal-info {
-  padding: 0 20px;
+  display:flex;
+  flex-direction:column ;
+  padding: 20px 20px;
   font-size: 18px;
-  line-height: 30px;
-  border-bottom: 0;
+}
+
+.info-row{
+     display:flex;
+    margin-bottom :15px;
+}
+
+.info{
+     display:flex;
+}
+.dash{
+  margin-right:10px ;
+  margin-left :10px ;
+}
+
+.last-info{
+     display:flex;
 }
 
 span {
@@ -85,10 +93,10 @@ hr.top {
 }
 
 .fullName {
-  color: #565656;
+  color: rgba(86, 86, 86, 1);
   font-size: 30px;
   font-weight: 600;
-  text-shadow: 2px 2px 4px #565656;
+  text-shadow: 2px 2px 4px rgba(86, 86, 86, 1);
   text-transform: uppercase;
   letter-spacing: 2px;
   margin: 0;
@@ -119,8 +127,7 @@ hr.top {
   border-radius: 50%;
   margin-right: 10px;
   margin-top: 3px;
-  background-color: #9a9494;
-  width: 15px;
+  background-color: rgba(154, 148, 148, 1);
   height: 15px;
   border-radius: 50%;
 }
@@ -129,16 +136,21 @@ hr.top {
 .details {
   padding: 2px;
   width: 90%;
-  margin-left: 4%;
-  margin-bottom: 2%;
+  margin-left: 10px;
+  margin-bottom: 20px;
   border-collapse: collapse;
   border: none;
+}
+
+.details li {
+  list-style-type:disc;
+  margin-left: 15 px ;
 }
 
 .nameSection {
   font-size: 23px;
   font-weight: 600;
-  text-shadow: 1px 1px 2px #565656;
+  text-shadow: 1px 1px 2px rgba(86, 86, 86, 1);
   text-transform: uppercase;
   margin: 0;
   padding: 0;
@@ -147,11 +159,13 @@ hr.top {
 .headSection {
   padding: 0 45px;
   line-height: 10px;
+  display: inline-block;
 }
+
 
 .city,
 .CompanyPoositionExp {
-  color: #565656;
+  color: rgba(86, 86, 86, 1);
   text-transform: uppercase;
   font-size: 19px;
   letter-spacing: 2px;
@@ -159,7 +173,7 @@ hr.top {
 }
 
 .city {
-  color: #9a9494;
+  color: rgba(154, 148, 148, 1);
 }
 
 .CompanyPoositionExp b {
@@ -173,50 +187,49 @@ hr.top {
 table {
   width: 100%;
   border-collapse: collapse;
-  border: 1px solid #ccc;
+  border: 1px solid rgba(204, 204, 204, 1);
 }
 
 /* Style for table headers */
 th {
-  background-color: #f2f2f2;
-  border: 1px solid #ccc;
+  background-color: rgba(242, 242, 242, 1);
+  border: 1px solid rgba(204, 204, 204, 1);
   padding: 8px;
   text-align: left;
 }
 
 /* Style for table cells */
 td {
-  border: 1px solid #ccc;
+  border: 1px solid rgba(204, 204, 204, 1);
   padding: 8px;
 }
 
 /* Style for alternate rows */
 tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: rgba(249, 249, 249, 1);
 }
 
 /* Style for sub header row */
 .tblSubHeader th {
-  background-color: #e0e0e0;
+  background-color: rgba(224, 224, 224, 1);
 }
 
-/* Additional styles for specific cells if needed */
 .LanguageCode {
   font-weight: bold;
 }
 
-
 .logo {
-  height: 10%;
+    height:10%;
   width: 20%;
-  float: right; /* Float the logo to the right */
-  margin-right: 10px; /* Add margin for spacing */
+  float: right;
+  margin-right: 10px;
 }
+
 .fullName {
-  color: #565656;
+  color: rgba(86, 86, 86, 1);
   font-size: 30px;
   font-weight: 600;
-  text-shadow: 2px 2px 4px #565656;
+  text-shadow: 2px 2px 4px rgba(86, 86, 86, 1);
   text-transform: uppercase;
   letter-spacing: 2px;
   margin: 0px;
